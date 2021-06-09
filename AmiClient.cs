@@ -97,12 +97,12 @@ namespace Akyros.Asterisk.AMI
             return true;
         }
 
-        public bool Login(string username, string secret)
+        public bool Login()
         {
             if (!socket.Connected)
                 return false;
 
-            SendString($"Action: Login\nUsername: {username}\nSecret: {secret}\n\n");
+            SendString($"Action: Login\nUsername: {amiUsername}\nSecret: {amiSecret}\n\n");
             if (readingThread == null)
             {
                 readingThread = new(ReadDataThread)
